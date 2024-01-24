@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.views.static import serve
-
+from dotenv import load_dotenv
+import os
+load_dotenv()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog.urls')),
     path('cart/', include('cart.urls')),
-    path('static/<path:path>/', serve, {'document_root': 'C:\\Users\\khuyt\\ecomstore\\static'}),
+    path('static/<path:path>/', serve, {'document_root': os.environ.get('ROOT_FOLDER') + 'static'}),
 ]
 
 handler404 = 'ecomstore.views.file_not_found_404'  # Thêm xử lý lỗi 404
