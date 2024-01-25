@@ -48,7 +48,6 @@ def show_product(request, product_slug, template_name="catalog/product.html"):
         #Gán giá trị product_slug cho hidden input
         form.fields['product_slug'].widget.attrs['value'] = product_slug
 
-        #Đặt test cookie trong phần GET đầu tiên
         request.session.set_test_cookie()
 
     # context = {
